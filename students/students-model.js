@@ -1,25 +1,25 @@
-const db = require("../data/config")
+const db = require("../config")
 
 function find() {
-	return db("hobbits")
+	return db("students")
 }
 
 function findById(id) {
-	return db("hobbits").where({ id }).first()
+	return db("students").where({ id }).first()
 }
 
 async function create(data) {
-	const [id] = await db("hobbits").insert(data)
+	const [id] = await db("students").insert(data)
 	return findById(id)
 }
 
 async function update(id, data) {
-	await db("hobbits").where({ id }).update(data)
+	await db("students").where({ id }).update(data)
 	return findById(id)
 }
 
 function remove(id) {
-	return db("hobbits").where({ id }).del()
+	return db("students").where({ id }).del()
 }
 
 module.exports = {

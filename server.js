@@ -1,14 +1,14 @@
 const express = require("express")
-const cors = require("cors")
-const hobbitsRouter = require("./hobbits/hobbits-router")
+// const cors = require("cors")
+const studentRouter = require("./students/students-router")
 
 const server = express()
 
 
-server.use(cors())
+// server.use(cors())
 server.use(express.json())
 
-server.use("/hobbits", hobbitsRouter)
+server.use("/students", studentRouter)
 server.get("/", (req, res) => {
 	res.json({
 		message: "Welcome to our API",

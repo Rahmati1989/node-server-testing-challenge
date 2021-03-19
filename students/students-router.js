@@ -23,11 +23,19 @@ router.get("/:id", async (req, res, next) =>{
 		next(err)
 	}
 })
-router.post("/",async (req,res, next) => {
+router.post("/", async (req,res, next) => {
 	try{
 		const student = await Students.create(req.body)
 		res.status(201).json(student)
 	}catch (err){
+		next(err)
+	}
+})
+router.delete("/:id", async (req,res,next) =>{
+	try {
+		const student = await Students.remove(req.params.id)
+		res.status(200).json(student)
+	}catch(err){
 		next(err)
 	}
 })

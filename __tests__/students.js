@@ -35,12 +35,17 @@ it("error if student not found", async () =>{
     const res = await supertest(server).get("/students/50")
     expect(res.statusCode).toBe(404)
 })
-it("creates a hobbit", async () =>{
+it("creates a student", async () =>{
     const res = await supertest(server).post("/students")
     .send({student_name: "nadira"})
     expect(res.statusCode).toBe(201)
     expect(res.type).toBe("application/json")
     expect(res.body.student_name).toBe("nadira")
     // expect(res.body.id).toBeDefined()
+})
+it("delete a student", async () =>{
+    const res = await supertest(server).delete("/:id")
+    expect(res.statusCode).toBe(404)
+    
 })
 })
